@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 
-@Composable
+/*@Composable
 fun appNavHost(navController: NavHostController) {
     NavHost(navController, startDestination = "Home") {
         composable("Home") {
@@ -15,4 +15,4 @@ fun appNavHost(navController: NavHostController) {
         }
         //composable("ShoppingList") { ShoppingList(onNavigateToHome = { navController.navigate("Home") }) }
     }
-}
+}*/

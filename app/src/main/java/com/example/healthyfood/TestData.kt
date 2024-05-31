@@ -1,5 +1,7 @@
 package com.example.healthyfood
 
+import com.example.healthyfood.ui.screens.Recipe
+
 object TestData {
     val RecipesList = listOf(
         Recipe("Dishes1"),
