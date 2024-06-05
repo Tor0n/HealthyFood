@@ -5,12 +5,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.BottomAppBarDefaults
@@ -23,13 +23,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.healthyfood.R
+import com.example.healthyfood.data.Recipe
 import com.example.healthyfood.viewmodels.SearchUiState
-import com.example.healthyfood.viewmodels.SearchViewModel
 
 @Composable
 fun SearchScreen(
@@ -42,22 +40,22 @@ fun SearchScreen(
             BottomAppBar(
                 actions = {
                     IconButton(onClick = { onHomeClick() }) {
-                        Icon(Icons.Filled.Home, contentDescription = "Localized description")
+                        Icon(Icons.Filled.Home, contentDescription = "")
                     }
                     IconButton(onClick = {  }) {
-                        Icon(Icons.Filled.Menu, contentDescription = "Localized description")
+                        Icon(Icons.Filled.Menu, contentDescription = "")
                     }
                     IconButton(onClick = { onShoppingListClick() }) {
-                        Icon(Icons.Filled.ShoppingCart, contentDescription = "Localized description")
+                        Icon(Icons.Filled.ShoppingCart, contentDescription = "")
                     }
                 },
                 floatingActionButton = {
                     FloatingActionButton(
-                        onClick = { /* do something */ },
+                        onClick = {  },
                         containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                         elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                     ) {
-                        Icon(Icons.Filled.Add, "Localized description")
+                        Icon(Icons.Filled.Search, "Localized description")
                     }
                 }
             )
@@ -66,26 +64,29 @@ fun SearchScreen(
         when (searchUiState) {
             is SearchUiState.Loading -> LoadingScreen( modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding))
+                .padding(innerPadding)
+            )
             is SearchUiState.Success -> ResultScreen(
-                recipes = searchUiState.recipes, modifier = Modifier
-                    .fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
+                recipes = searchUiState.recipes
+            )
+            is SearchUiState.Error -> ErrorScreen(
+                modifier = Modifier
+                    .fillMaxSize()
                     .padding(innerPadding)
             )
-            is SearchUiState.Error -> ErrorScreen( modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding))
         }
 
     }
 }
 @Composable
-fun ResultScreen(recipes: String, modifier: Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-    ) {
-        Text(text = recipes)
+fun ResultScreen(modifier: Modifier = Modifier, recipes: Array<Recipe>) {
+    LazyColumn(modifier = modifier) {
+        /*items(recipeList) {recipe ->
+
+        }*/
     }
 }
 @Composable

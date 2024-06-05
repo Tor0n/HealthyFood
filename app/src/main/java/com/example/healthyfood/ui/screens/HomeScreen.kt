@@ -33,13 +33,13 @@ fun HomeScreen(
             BottomAppBar(
                 actions = {
                     IconButton(onClick = { /* do something */ }) {
-                        Icon(Icons.Filled.Home, contentDescription = "Localized description")
+                        Icon(Icons.Filled.Home, contentDescription = "")
                     }
                     IconButton(onClick = { onSearchClick() }) {
-                        Icon(Icons.Filled.Menu, contentDescription = "Localized description")
+                        Icon(Icons.Filled.Menu, contentDescription = "")
                     }
                     IconButton(onClick = { onShoppingListClick() }) {
-                        Icon(Icons.Filled.ShoppingCart, contentDescription = "Localized description")
+                        Icon(Icons.Filled.ShoppingCart, contentDescription = "")
                     }
                 },
                 floatingActionButton = {
@@ -48,7 +48,7 @@ fun HomeScreen(
                         containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                         elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                     ) {
-                        Icon(Icons.Filled.Add, "Localized description")
+                        Icon(Icons.Filled.Add, "")
                     }
                 }
             )
