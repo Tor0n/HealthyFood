@@ -26,7 +26,8 @@ import com.example.healthyfood.TestData
 @Composable
 fun HomeScreen(
     onSearchClick: () -> Unit,
-    onShoppingListClick: () -> Unit
+    onShoppingListClick: () -> Unit,
+    onAddClick: () -> Unit
 ) {
     Scaffold(
         bottomBar = {
@@ -44,7 +45,7 @@ fun HomeScreen(
                 },
                 floatingActionButton = {
                     FloatingActionButton(
-                        onClick = { /* do something */ },
+                        onClick = { onAddClick() },
                         containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                         elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                     ) {
@@ -65,12 +66,12 @@ fun preview() {
         recipes = TestData.RecipesList
     )
 }
-data class Recipe(val name: String)
+data class Recipe(val name: String, val calories: Double)
 @Composable
 fun RecipeCard(recipe: Recipe) {
     Row(modifier = Modifier.padding(all = 4.dp)) {
         Text(
-            text = recipe.name
+            text = recipe.name + ", calories: " + recipe.calories
         )
     }
 }

@@ -9,10 +9,10 @@ data class edamamResponse(
 )
 @Serializable
 data class Hit(
-    @SerialName("recipe") val recipe: Recipe
+    @SerialName("recipe") val edamamRecipe: edamamRecipe
 )
 @Serializable
-data class Recipe(
+data class edamamRecipe(
     @SerialName("label") val label: String,
     @SerialName("calories") val calories: Double
 )

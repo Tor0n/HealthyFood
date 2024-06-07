@@ -4,15 +4,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.healthyfood.data.Recipe
-import com.example.healthyfood.network.HealthyFoodApi
-import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
-import java.io.IOException
+import com.example.healthyfood.data.edamamRecipe
 
 sealed interface SearchUiState {
-    data class Success(val recipes: Array<Recipe>) : SearchUiState
+    data class Success(val edamamRecipes: Array<edamamRecipe>) : SearchUiState
     object Error : SearchUiState
     object Loading : SearchUiState
 }
@@ -21,7 +16,7 @@ class SearchViewModel :ViewModel() {
     var searchUiState: SearchUiState by mutableStateOf(SearchUiState.Loading)
         private set
 
-    init {
+    /*init {
         getSearchRecipes()
     }
 
@@ -37,5 +32,5 @@ class SearchViewModel :ViewModel() {
                 SearchUiState.Error
             }
         }
-    }
+    }*/
 }

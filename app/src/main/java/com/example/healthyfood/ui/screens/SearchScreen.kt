@@ -26,7 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.healthyfood.R
-import com.example.healthyfood.data.Recipe
+import com.example.healthyfood.data.edamamRecipe
 import com.example.healthyfood.viewmodels.SearchUiState
 
 @Composable
@@ -70,7 +70,7 @@ fun SearchScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding),
-                recipes = searchUiState.recipes
+                edamamRecipes = searchUiState.edamamRecipes
             )
             is SearchUiState.Error -> ErrorScreen(
                 modifier = Modifier
@@ -82,7 +82,7 @@ fun SearchScreen(
     }
 }
 @Composable
-fun ResultScreen(modifier: Modifier = Modifier, recipes: Array<Recipe>) {
+fun ResultScreen(modifier: Modifier = Modifier, edamamRecipes: Array<edamamRecipe>) {
     LazyColumn(modifier = modifier) {
         /*items(recipeList) {recipe ->
 
@@ -95,8 +95,10 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
         modifier = modifier
     ) {
-        Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "")
-        Text(text = "Loading ...")
+        Column {
+            Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "")
+            Text(text = "Loading ...")
+        }
     }
 }
 @Composable
