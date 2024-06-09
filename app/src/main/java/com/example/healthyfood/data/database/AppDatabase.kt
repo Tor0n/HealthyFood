@@ -11,6 +11,21 @@ import androidx.room.RoomDatabase
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun recipeDao(): RecipeDao
+
+    /*companion object {
+        @Volatile private var instance: AppDatabase? = null
+
+        fun getInstance(context: Context): AppDatabase {
+            return instance ?: synchronized(this) {
+                instance ?: buildDatabase(context).also { instance = it }
+            }
+        }
+        private fun buildDatabase(context: Context): AppDatabase {
+            return Room.databaseBuilder(context, AppDatabase::class.java, "database.db")
+                .fallbackToDestructiveMigration()
+                .build()
+        }
+    }*/
 }
 
 object DB {
@@ -20,7 +35,7 @@ object DB {
         applicationContext = context
     }
 
-    private val appDatabase: AppDatabase by lazy {
+    val appDatabase: AppDatabase by lazy {
         Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database.db")
             //.createFromAsset("room_article.db")
             .build()

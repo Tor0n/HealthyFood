@@ -9,12 +9,13 @@ import com.example.healthyfood.ui.screens.AddRecipeSreen
 import com.example.healthyfood.ui.screens.HomeScreen
 import com.example.healthyfood.ui.screens.SearchScreen
 import com.example.healthyfood.ui.screens.ShoppingListScreen
+import com.example.healthyfood.viewmodels.AddRecipeViewModel
 import com.example.healthyfood.viewmodels.SearchViewModel
 
 @Composable
 fun HealthyFoodApp() {
-    //val homeViewModel: HomeViewModel = viewModel()
     val searchViewModel: SearchViewModel = viewModel()
+    //val addRecipeViewModel: AddRecipeViewModel = viewModel()
     val navController = rememberNavController()
     NavHost(navController, startDestination = "Home") {
         composable("Home") {
@@ -39,7 +40,8 @@ fun HealthyFoodApp() {
         }
         composable("AddRecipe") {
             AddRecipeSreen(
-                onAddClick = { /*TODO*/ },
+                //addRecipeViewModel = addRecipeViewModel,
+                //onAddClick = {},
                 onCancelClick = { navController.navigate("Home") }
             )
         }

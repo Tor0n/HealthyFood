@@ -60,7 +60,7 @@ fun HomeScreen(
 }
 @Preview
 @Composable
-fun preview() {
+fun previewHomeScreen() {
     RecipeList(
         modifier = Modifier.padding(4.dp),
         recipes = TestData.RecipesList

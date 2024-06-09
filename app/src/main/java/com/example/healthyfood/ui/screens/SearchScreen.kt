@@ -1,7 +1,6 @@
 package com.example.healthyfood.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,12 +9,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.BottomAppBarDefaults
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -49,7 +44,7 @@ fun SearchScreen(
                         Icon(Icons.Filled.ShoppingCart, contentDescription = "")
                     }
                 },
-                floatingActionButton = {
+                /*floatingActionButton = {
                     FloatingActionButton(
                         onClick = {  },
                         containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
@@ -57,7 +52,7 @@ fun SearchScreen(
                     ) {
                         Icon(Icons.Filled.Search, "Localized description")
                     }
-                }
+                }*/
             )
         }
     ){innerPadding ->
@@ -103,12 +98,13 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
 }
 @Composable
 fun ErrorScreen(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
     ) {
-        Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "")
-        Text(text = "Error", modifier = Modifier.padding(16.dp))
+        Column {
+            Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "")
+            Text(text = "*Error*", modifier = Modifier.padding(16.dp))
+        }
     }
 }

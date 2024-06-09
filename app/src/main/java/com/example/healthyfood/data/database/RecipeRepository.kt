@@ -10,9 +10,9 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
         }
     }
     suspend fun insertRecipe(recipe: Recipe) {
-        withContext(Dispatchers.IO) {
+        //withContext(Dispatchers.IO) {
             recipeDao.insert(recipe)
-        }
+        //}
     }
     suspend fun deleteRecipe(recipe: Recipe) {
         withContext(Dispatchers.IO) {
