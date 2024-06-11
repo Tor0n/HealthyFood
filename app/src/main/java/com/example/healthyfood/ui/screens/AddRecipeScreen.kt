@@ -1,6 +1,5 @@
 package com.example.healthyfood.ui.screens
 
-import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,29 +11,23 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.healthyfood.data.database.AppDatabase
-import com.example.healthyfood.data.database.DB
-import com.example.healthyfood.data.database.RecipeDao
-import com.example.healthyfood.data.database.RecipeRepository
 import com.example.healthyfood.viewmodels.AddRecipeViewModel
 
 @Composable
-fun AddRecipeSreen(
-
+fun AddRecipeScreen(
+    addRecipeViewModel: AddRecipeViewModel = viewModel(),
     //onAddClick: () -> Unit,
     onCancelClick: () -> Unit
 ) {
     //val addRecipeViewModel: AddRecipeViewModel = viewModel()
-    val recipeRepository: RecipeRepository by lazy { RecipeRepository(DB.appDatabase.recipeDao()) }
-    val addRecipeViewModel: AddRecipeViewModel by lazy { AddRecipeViewModel(recipeRepository = recipeRepository) }
+    //val recipeRepository: RecipeRepository by lazy { RecipeRepository(DB.appDatabase.recipeDao()) }
+    //val addRecipeViewModel: AddRecipeViewModel by lazy { AddRecipeViewModel(recipeRepository = recipeRepository) }
     Scaffold(
         bottomBar = {
             BottomAppBar(
                 actions = {
-                    TextButton(onClick = { addRecipeViewModel.AddRecipe() }) {
+                    TextButton(onClick = { addRecipeViewModel.addRecipe() }) {
                         Text(text = "Add")
                     }
                     TextButton(onClick = { onCancelClick() }) {
@@ -59,9 +52,10 @@ fun AddRecipeCard(modifier: Modifier, viewModel: AddRecipeViewModel) {
         OutlinedTextField(value = viewModel.label, onValueChange = {
             viewModel.label = it
         })
-        OutlinedTextField(value = viewModel.ingredients, onValueChange = {
-            viewModel.ingredients = it
-        })
+        /*OutlinedTextField(value = viewModel.ingredients, onValueChange = {
+            //viewModel.ingredients[1] = it
+            viewModel.ingredients[1] = "123"
+        })*/
         CommonTextField(
             title = "Calories", placeholder = "Calories",
             value = viewModel.calories,

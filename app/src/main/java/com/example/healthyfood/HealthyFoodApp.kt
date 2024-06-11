@@ -5,11 +5,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.healthyfood.ui.screens.AddRecipeSreen
+import com.example.healthyfood.ui.screens.AddRecipeScreen
 import com.example.healthyfood.ui.screens.HomeScreen
 import com.example.healthyfood.ui.screens.SearchScreen
 import com.example.healthyfood.ui.screens.ShoppingListScreen
-import com.example.healthyfood.viewmodels.AddRecipeViewModel
 import com.example.healthyfood.viewmodels.SearchViewModel
 
 @Composable
@@ -39,7 +38,7 @@ fun HealthyFoodApp() {
             )
         }
         composable("AddRecipe") {
-            AddRecipeSreen(
+            AddRecipeScreen(
                 //addRecipeViewModel = addRecipeViewModel,
                 //onAddClick = {},
                 onCancelClick = { navController.navigate("Home") }

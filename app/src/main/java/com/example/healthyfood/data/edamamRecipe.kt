@@ -14,5 +14,6 @@ data class Hit(
 @Serializable
 data class edamamRecipe(
     @SerialName("label") val label: String,
+    @SerialName("ingredientLines") val ingredientLines: List<String>,
     @SerialName("calories") val calories: Double
 )

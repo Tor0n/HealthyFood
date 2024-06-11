@@ -74,8 +74,11 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.hilt.work)
+    implementation(libs.androidx.hilt.compiler)
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
